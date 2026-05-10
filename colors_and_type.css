@@ -1,0 +1,276 @@
+/* ProDesk — Colors & Type
+   ------------------------------------------------------------
+   Source of truth for all brand color + typography tokens.
+   Mirrors the ProDesk Brand Book v1.0 (2026).
+   ------------------------------------------------------------ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..800;1,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Caveat:wght@500;700&display=swap');
+
+:root {
+  /* ---------- Color: Core ---------- */
+  --ink:        #1A1D26;   /* ProDesk Ink. Deep navy-charcoal, the voice. */
+  --volt:       #D9F542;   /* Brand accent. The spark. */
+  --paper:      #F4F1EB;   /* Warm cream paper. The room. */
+  --card:       #FBF8F2;   /* Lighter cream — card layer on paper. */
+
+  /* ---------- Color: Extended SaaS palette ---------- */
+  --pd-blk:        #1A1D26;  /* ProDesk Ink — deep navy-charcoal */
+  --cold-slate:    #5A5852;  /* Warm slate — secondary surface / muted ink */
+  --pure-white:    #FFFFFF;  /* Pure white (rarely used) */
+  --off-white:     #F4F1EB;  /* Warm cream paper */
+  --volt-grad:     linear-gradient(135deg, #D9F542 0%, #F4F1EB 100%);
+
+  /* ---------- Color: Persona accents ---------- */
+  /* Volt is the global ProDesk accent — reserved for the no-persona /
+     "overall ProDesk" view (default brand mark). When a persona is
+     active, --accent inherits its specific color and replaces volt
+     in persona-aware UI. */
+  --accent-brand:      #7C5CFF;   /* Brand → Electric violet (founders / entrepreneurs) */
+  --accent-agency:     #4F7CFF;   /* Agency → Electric blue (professional SaaS) */
+  --accent-contractor: #FF6E40;   /* Contractor → Coral (hands-on, craft) */
+
+  /* Default accent — overridden per persona via .persona-* */
+  --accent:        var(--volt);
+  --accent-ink:    var(--ink);    /* Foreground that pairs with --accent */
+  --accent-soft:   rgba(217, 245, 66, 0.18);  /* Tinted surface */
+
+  /* ---------- Color: Ink scale (text only) ---------- */
+  --ink-100: #1A1D26;
+  --ink-80:  #353842;
+  --ink-60:  #5A5852;
+  --ink-40:  #8E8A82;
+  --ink-20:  #C9C3B8;
+  --ink-10:  #E4DFD4;
+
+  /* ---------- Semantic foreground ---------- */
+  --fg-1: var(--ink-100);   /* Primary body / headlines */
+  --fg-2: var(--ink-60);    /* Secondary text / metadata */
+  --fg-3: var(--ink-40);    /* Tertiary / disabled */
+  --fg-on-volt: var(--ink-100);
+  --fg-on-ink:  var(--paper);
+
+  /* ---------- Semantic background ---------- */
+  --bg-page:   var(--paper);
+  --bg-card:   var(--card);
+  --bg-inset:  #ECE7DC;     /* Warm inset / hover surface on paper */
+  --bg-ink:    var(--ink-100);
+  --bg-volt:   var(--volt);
+
+  /* ---------- Borders / dividers ---------- */
+  --border-1: rgba(26, 29, 38, 0.08);   /* hairline */
+  --border-2: rgba(26, 29, 38, 0.14);   /* default */
+  --border-strong: var(--ink-100);
+
+  /* ---------- Status (kept monochrome; Volt = success/active) ---------- */
+  --success: var(--volt);
+  --danger:  #D24A2A;       /* Used sparingly for destructive only */
+  --warn:    #C98A2B;
+  --info:    var(--ink-100);
+
+  /* ---------- Typeface stacks ---------- */
+  --font-sans:    'Inter Tight', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif:   'Instrument Serif', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  /* ---------- Type scale (px / line-height / tracking ‰) ---------- */
+  /* Display: 120 / 100 · -50‰ */
+  --display-size: 120px;
+  --display-lh: 100px;
+  --display-tracking: -0.05em;
+
+  /* H1: 84 / 88 · -40‰ */
+  --h1-size: 84px;
+  --h1-lh: 88px;
+  --h1-tracking: -0.04em;
+
+  /* H2: 56 / 64 · -30‰ */
+  --h2-size: 56px;
+  --h2-lh: 64px;
+  --h2-tracking: -0.03em;
+
+  /* H3 / Lead: 36 / 44 · -10‰ */
+  --h3-size: 36px;
+  --h3-lh: 44px;
+  --h3-tracking: -0.01em;
+
+  /* Body: 24 / 34 · 0 */
+  --body-size: 24px;
+  --body-lh: 34px;
+  --body-tracking: 0;
+
+  /* Eyebrow / Caption: 16 / 24 · +100‰ uppercase */
+  --eyebrow-size: 16px;
+  --eyebrow-lh: 24px;
+  --eyebrow-tracking: 0.10em;
+
+  /* UI scale (smaller — for product chrome, not editorial) */
+  --ui-xs: 12px;
+  --ui-sm: 14px;
+  --ui-md: 15px;
+  --ui-lg: 17px;
+
+  /* ---------- Weights ---------- */
+  --w-light: 300;
+  --w-regular: 400;
+  --w-medium: 500;
+  --w-semibold: 600;
+  --w-bold: 700;
+  --w-heavy: 800;
+
+  /* ---------- Spacing (8-pt rhythm) ---------- */
+  --s-1: 8px;
+  --s-2: 16px;
+  --s-3: 24px;
+  --s-4: 32px;
+  --s-5: 48px;
+  --s-6: 64px;
+  --s-7: 96px;
+
+  /* ---------- Radii ---------- */
+  --r-sm: 6px;    /* small surfaces, inputs, chips */
+  --r-md: 14px;   /* cards, panels */
+  --r-lg: 28px;   /* hero / billboard surfaces */
+  --r-pill: 999px;
+
+  /* ---------- Elevation ---------- */
+  /* Depth comes from layout, not blends — shadows stay tight + monochrome. */
+  --shadow-1: 0 1px 0 rgba(26,29,38,0.05), 0 1px 2px rgba(26,29,38,0.04);
+  --shadow-2: 0 1px 0 rgba(26,29,38,0.05), 0 6px 18px -8px rgba(26,29,38,0.14);
+  --shadow-3: 0 1px 0 rgba(26,29,38,0.05), 0 24px 48px -16px rgba(26,29,38,0.20);
+  --ring-volt: 0 0 0 3px rgba(217, 245, 66, 0.55);
+
+  /* ---------- Motion ---------- */
+  --ease-click: cubic-bezier(.2, .8, .2, 1);
+  --dur-quick: 120ms;
+  --dur-standard: 240ms;
+  --dur-statement: 480ms;
+
+  /* ---------- Layout ---------- */
+  --grid-cols: 12;
+  --gutter: 24px;
+  --container-max: 1280px;
+}
+
+/* ============================================================
+   Base + semantic element styles
+   ============================================================ */
+
+html, body {
+  background: var(--bg-page);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+  font-size: var(--body-size);
+  line-height: var(--body-lh);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--volt); color: var(--ink); }
+
+.display, h1.display {
+  font-family: var(--font-sans);
+  font-weight: var(--w-heavy);
+  font-size: var(--display-size);
+  line-height: var(--display-lh);
+  letter-spacing: var(--display-tracking);
+  text-wrap: balance;
+}
+
+h1 {
+  font-family: var(--font-sans);
+  font-weight: var(--w-heavy);
+  font-size: var(--h1-size);
+  line-height: var(--h1-lh);
+  letter-spacing: var(--h1-tracking);
+  text-wrap: balance;
+  margin: 0;
+}
+
+h2 {
+  font-family: var(--font-sans);
+  font-weight: var(--w-bold);
+  font-size: var(--h2-size);
+  line-height: var(--h2-lh);
+  letter-spacing: var(--h2-tracking);
+  text-wrap: balance;
+  margin: 0;
+}
+
+h3, .lead {
+  font-family: var(--font-sans);
+  font-weight: var(--w-semibold);
+  font-size: var(--h3-size);
+  line-height: var(--h3-lh);
+  letter-spacing: var(--h3-tracking);
+  margin: 0;
+}
+
+p, .body {
+  font-family: var(--font-sans);
+  font-weight: var(--w-regular);
+  font-size: var(--body-size);
+  line-height: var(--body-lh);
+  letter-spacing: var(--body-tracking);
+  text-wrap: pretty;
+  color: var(--fg-1);
+}
+
+.eyebrow, .caption {
+  font-family: var(--font-mono);
+  font-weight: var(--w-medium);
+  font-size: var(--eyebrow-size);
+  line-height: var(--eyebrow-lh);
+  letter-spacing: var(--eyebrow-tracking);
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.serif-italic, em.brand {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+code, kbd, samp, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  letter-spacing: 0;
+}
+
+a { color: inherit; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+a:hover { text-decoration-color: var(--volt); text-decoration-thickness: 3px; }
+
+hr { border: 0; border-top: 1px solid var(--border-2); margin: var(--s-4) 0; }
+
+/* ---------- Surfaces ---------- */
+.surface-paper { background: var(--bg-page); color: var(--fg-1); }
+.surface-card  { background: var(--bg-card); color: var(--fg-1); border-radius: var(--r-md); }
+.surface-ink   { background: var(--bg-ink);  color: var(--fg-on-ink); }
+.surface-volt  { background: var(--bg-volt); color: var(--fg-on-volt); }
+
+/* ---------- Focus ring ---------- */
+:focus-visible { outline: none; box-shadow: var(--ring-volt); border-radius: var(--r-sm); }
+
+/* ============================================================
+   Per-persona accent overrides
+   Set on the .page wrapper as `persona-brand` / `persona-agency` /
+   `persona-contractor`. --accent flips, --volt stays untouched
+   (volt remains the ProDesk brand mark).
+   ============================================================ */
+
+.persona-brand {
+  --accent:      var(--accent-brand);
+  --accent-ink:  #FFFFFF;
+  --accent-soft: rgba(124, 92, 255, 0.16);
+}
+.persona-agency {
+  --accent:      var(--accent-agency);
+  --accent-ink:  #FFFFFF;
+  --accent-soft: rgba(79, 124, 255, 0.14);
+}
+.persona-contractor {
+  --accent:      var(--accent-contractor);
+  --accent-ink:  #FFFFFF;
+  --accent-soft: rgba(255, 110, 64, 0.16);
+}
