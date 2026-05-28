@@ -4,43 +4,22 @@
    Mirrors the ProDesk Brand Book v1.0 (2026).
    ------------------------------------------------------------ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..800;1,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Caveat:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..800;1,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 
 :root {
   /* ---------- Color: Core ---------- */
-  --ink:        #1A1D26;   /* ProDesk Ink. Deep navy-charcoal, the voice. */
-  --volt:       #D9F542;   /* Brand accent. The spark. */
-  --paper:      #F4F1EB;   /* Warm cream paper. The room. */
-  --card:       #FBF8F2;   /* Lighter cream — card layer on paper. */
-
-  /* ---------- Color: Extended SaaS palette ---------- */
-  --pd-blk:        #1A1D26;  /* ProDesk Ink — deep navy-charcoal */
-  --cold-slate:    #5A5852;  /* Warm slate — secondary surface / muted ink */
-  --pure-white:    #FFFFFF;  /* Pure white (rarely used) */
-  --off-white:     #F4F1EB;  /* Warm cream paper */
-  --volt-grad:     linear-gradient(135deg, #D9F542 0%, #F4F1EB 100%);
-
-  /* ---------- Color: Persona accents ---------- */
-  /* Volt is the global ProDesk accent — reserved for the no-persona /
-     "overall ProDesk" view (default brand mark). When a persona is
-     active, --accent inherits its specific color and replaces volt
-     in persona-aware UI. */
-  --accent-brand:      #7C5CFF;   /* Brand → Electric violet (founders / entrepreneurs) */
-  --accent-agency:     #4F7CFF;   /* Agency → Electric blue (professional SaaS) */
-  --accent-contractor: #FF6E40;   /* Contractor → Coral (hands-on, craft) */
-
-  /* Default accent — overridden per persona via .persona-* */
-  --accent:        var(--volt);
-  --accent-ink:    var(--ink);    /* Foreground that pairs with --accent */
-  --accent-soft:   rgba(217, 245, 66, 0.18);  /* Tinted surface */
+  --ink:        #0E0E0C;   /* Primary. The voice. */
+  --volt:       #D9F542;   /* Accent. The spark. */
+  --paper:      #F4F1E8;   /* Surface. The room. */
+  --card:       #FBFAF4;   /* Surface. Slightly brighter card layer. */
 
   /* ---------- Color: Ink scale (text only) ---------- */
-  --ink-100: #1A1D26;
-  --ink-80:  #353842;
-  --ink-60:  #5A5852;
-  --ink-40:  #8E8A82;
-  --ink-20:  #C9C3B8;
-  --ink-10:  #E4DFD4;
+  --ink-100: #0E0E0C;
+  --ink-80:  #2C2C28;
+  --ink-60:  #5A5A52;
+  --ink-40:  #8E8E84;
+  --ink-20:  #C9C7BD;
+  --ink-10:  #E4E2D8;
 
   /* ---------- Semantic foreground ---------- */
   --fg-1: var(--ink-100);   /* Primary body / headlines */
@@ -52,13 +31,13 @@
   /* ---------- Semantic background ---------- */
   --bg-page:   var(--paper);
   --bg-card:   var(--card);
-  --bg-inset:  #ECE7DC;     /* Warm inset / hover surface on paper */
+  --bg-inset:  #EFEBDF;     /* Subtle inset / hover surface on paper */
   --bg-ink:    var(--ink-100);
   --bg-volt:   var(--volt);
 
   /* ---------- Borders / dividers ---------- */
-  --border-1: rgba(26, 29, 38, 0.08);   /* hairline */
-  --border-2: rgba(26, 29, 38, 0.14);   /* default */
+  --border-1: rgba(14, 14, 12, 0.08);  /* hairline */
+  --border-2: rgba(14, 14, 12, 0.16);  /* default */
   --border-strong: var(--ink-100);
 
   /* ---------- Status (kept monochrome; Volt = success/active) ---------- */
@@ -134,9 +113,9 @@
 
   /* ---------- Elevation ---------- */
   /* Depth comes from layout, not blends — shadows stay tight + monochrome. */
-  --shadow-1: 0 1px 0 rgba(26,29,38,0.05), 0 1px 2px rgba(26,29,38,0.04);
-  --shadow-2: 0 1px 0 rgba(26,29,38,0.05), 0 6px 18px -8px rgba(26,29,38,0.14);
-  --shadow-3: 0 1px 0 rgba(26,29,38,0.05), 0 24px 48px -16px rgba(26,29,38,0.20);
+  --shadow-1: 0 1px 0 rgba(14,14,12,0.06), 0 1px 2px rgba(14,14,12,0.04);
+  --shadow-2: 0 1px 0 rgba(14,14,12,0.06), 0 6px 18px -8px rgba(14,14,12,0.16);
+  --shadow-3: 0 1px 0 rgba(14,14,12,0.06), 0 24px 48px -16px rgba(14,14,12,0.22);
   --ring-volt: 0 0 0 3px rgba(217, 245, 66, 0.55);
 
   /* ---------- Motion ---------- */
@@ -251,26 +230,3 @@ hr { border: 0; border-top: 1px solid var(--border-2); margin: var(--s-4) 0; }
 
 /* ---------- Focus ring ---------- */
 :focus-visible { outline: none; box-shadow: var(--ring-volt); border-radius: var(--r-sm); }
-
-/* ============================================================
-   Per-persona accent overrides
-   Set on the .page wrapper as `persona-brand` / `persona-agency` /
-   `persona-contractor`. --accent flips, --volt stays untouched
-   (volt remains the ProDesk brand mark).
-   ============================================================ */
-
-.persona-brand {
-  --accent:      var(--accent-brand);
-  --accent-ink:  #FFFFFF;
-  --accent-soft: rgba(124, 92, 255, 0.16);
-}
-.persona-agency {
-  --accent:      var(--accent-agency);
-  --accent-ink:  #FFFFFF;
-  --accent-soft: rgba(79, 124, 255, 0.14);
-}
-.persona-contractor {
-  --accent:      var(--accent-contractor);
-  --accent-ink:  #FFFFFF;
-  --accent-soft: rgba(255, 110, 64, 0.16);
-}
