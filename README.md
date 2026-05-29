@@ -1,31 +1,25 @@
-# Prodesk — Static HTML
+# ProDesk Marketing — Next.js
 
-Single-page static site. No build step required.
+Next.js 14 (App Router) app deployable to Vercel.
 
-## Deploy to Vercel
-
-1. Push this folder to a GitHub repo
-2. In Vercel: **New Project → Import repo**
-3. Framework Preset: **Other** (static)
-4. Build Command: *(leave empty)*
-5. Output Directory: *(leave empty — root)*
-6. Deploy
-
-Vercel will serve `index.html` directly. Done.
-
-## Local preview
-
-Open `index.html` in a browser, or run any static server:
-
+## Local dev
 ```bash
-npx serve .
+npm install
+npm run dev
 ```
 
-## Files
+## Deploy to Vercel
+```bash
+vercel
+```
+or push to GitHub and import the repo from the Vercel dashboard. No env vars required.
 
-- `index.html` — entry point
-- `Site.jsx`, `MiniMock.jsx`, `Partners.jsx` — components (loaded via Babel standalone)
-- `tweaks-panel.jsx` — design tweak controls
-- `site.css`, `colors_and_type.css` — styles
-- `assets/` — images, fonts, icons
-- `_logo-inline.svg` — logo asset
+## Structure
+- `app/layout.tsx` — root layout with Google Font links and metadata
+- `app/page.tsx` — home page (renders the marketing site as a client component)
+- `app/globals.css` — combined design tokens + site styles
+- `components/Site.jsx` — main marketing site (client)
+- `components/MiniMock.jsx` — hero product mock (client)
+- `components/Partners.jsx` — Founding Partners section (client)
+- `components/TweaksPanel.jsx` — in-design tweak controls (client)
+- `public/assets/` — static assets (logos, icons)
